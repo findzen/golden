@@ -1,0 +1,8 @@
+{
+  "name": "golden",
+  "version": "0.0.0",
+  "dependencies": {
+    "zepto": "~1.0.0"
+  },
+  "devDependencies": {}
+}
