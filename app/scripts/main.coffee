@@ -1,9 +1,13 @@
-console.log "'Allo from CoffeeScript!"
+'use strict'
 
 $.ajax
-  url: 'https://erikberg.com/events.json'
-  beforeSend: (request) ->
-    request.setRequestHeader 'Authorization', 'Bearer 88b7a5d7-e198-4d95-aee6-bceb20273178'
+  url: 'http://0.0.0.0:3000/'
+
   success: (data) ->
-    $('#js-main').html data
-    console.log "Success! #{data}"
+    go = true
+
+    JSON.parse(data.body).data.games.game.forEach (game) ->
+      if game.venue.match /dodger/i then go = false
+
+    decision = if go then 'Fuck yeah,' else 'Fuck that, do not'
+    $('#js-main').html "#{decision} fucking go to the Gold Room"
